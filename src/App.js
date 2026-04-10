@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -19,7 +19,7 @@ export default function App() {
   if (!user) return <Login />;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 to-black text-white p-3">
+    <div className="min-h-screen bg-black text-white p-3">
 
       <div className="flex justify-around mb-3">
         <button onClick={() => setTab("chat")}>💬</button>
@@ -30,7 +30,6 @@ export default function App() {
       {tab === "chat" && <Chat user={user} />}
       {tab === "feed" && <Feed />}
       {tab === "upload" && <Upload user={user} />}
-
     </div>
   );
 }
