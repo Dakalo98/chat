@@ -11,14 +11,15 @@ export default function Upload({ user }) {
 
     const fileRef = ref(storage, file.name);
     await uploadBytes(fileRef, file);
+
     const url = await getDownloadURL(fileRef);
 
     await addDoc(collection(db, "posts"), {
       type: "image",
       url,
-      createdAt: serverTimestamp(),
       userId: user.uid,
-      userEmail: user.email
+      userEmail: user.email,
+      createdAt: serverTimestamp()
     });
 
     alert("Uploaded 💖");

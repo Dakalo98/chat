@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { db } from "./firebase";
 import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
 
-export default function Feed({ user }) {
+export default function Feed() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -16,18 +16,19 @@ export default function Feed({ user }) {
   }, []);
 
   return (
-    <div className="space-y-4">
-      <h2 className="text-center text-xl font-bold">💖 Memories</h2>
+    <div className="space-y-3">
+
+      <h2 className="text-center font-bold text-xl">💖 Memories</h2>
 
       {posts.map((post) => (
         <div key={post.id} className="bg-white/10 rounded-xl overflow-hidden">
 
           {post.type === "image" && (
-            <img src={post.url} className="w-full h-64 object-cover" />
+            <img src={post.url} className="w-full h-60 object-cover" />
           )}
 
-          <div className="p-2 text-xs flex justify-between text-white/60">
-            <span>💖 {post.userEmail}</span>
+          <div className="p-2 text-xs text-white/60">
+            ❤️ {post.userEmail}
           </div>
 
         </div>
